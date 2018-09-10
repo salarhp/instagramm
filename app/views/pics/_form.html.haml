@@ -3,7 +3,7 @@
         - if @pic.errors.any?
             #errors
                 %h2
-                = pluralizer(@pic.errors.count, 'error')
+                = pluralize(@pic.errors.count, 'error')
                 preventer this pic form saving
                 %ul
                     - @pic.errors.full_message.each do |msg|
