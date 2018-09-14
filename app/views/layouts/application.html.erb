@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tumblr</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="navbar navbar-dark bg-dark d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 fixed-top">
+      <h5 class="my-0 mr-md-auto ">Tumblr</h5>
+      <% if user_signed_in? %>
+        <nav class="my-2 my-md-0 mr-md-3">
+          <%= link_to "Gram It!", new_pic_path, class:"btn btn-outline-success"%>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete , class:"btn btn-outline-primary"%>
+          <%= link_to "Settings", edit_user_registration_path, class:"btn btn-outline-success"%>
+      <% else %>
+          <%= link_to "Join", new_user_registration_path, class:"btn btn-outline-success"%>
+          <%= link_to "Log In", new_user_session_path, class:"btn btn-outline-success"%>
+        </nav>
+      <%end%>
+
+    </div>
+    <section>
+      <div class="container">
+          <div class="row body">
+            <div class="col-sm-9">
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
+              <%= yield %>
+            </div>
+            <div class="col-sm-3 sidenav">
+              <%# <%= render 'partials/sidebar' %>
+            </div>
+          </div>
+      </div>
+    </section>
+    <%# <%= render 'partials/footer'%>
+  </body>
+</html>
