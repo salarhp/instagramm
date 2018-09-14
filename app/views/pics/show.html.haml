@@ -3,6 +3,9 @@
 %p= @pic.description
 %p= @pic.user.email
 
-= link_to "back", root_path
-= link_to "edit", edit_pic_path
-= link_to "delete", pic_path, method: :delete, data: {confirm: "are u sure?"}
+.col.md-6
+    .btn-group.pull-right
+        -if user_signed_in?
+            = link_to "back", root_path, class: 'btn btn-info'
+            = link_to "edit", edit_pic_path, class: 'btn btn-success'
+            = link_to "delete", pic_path, method: :delete, data: {confirm: "are u sure?"}, class: 'btn btn-danger'
